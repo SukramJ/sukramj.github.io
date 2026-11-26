@@ -25,15 +25,15 @@ a{color:var(--a)}h1{display:flex;align-items:center;gap:.6rem}h1 img{width:2.4re
 <body>
 HTML
 }
-# item <repo> <description>
-item() { echo "<li><a href=\"https://github.com/SukramJ/$1\"><code>$1</code></a> <span>— $2</span></li>"; }
+# item <repo> <description> [docs-path]
+item() { d=""; [ -n "${3:-}" ] && d=" · <a href=\"/$3/\">docs</a>"; echo "<li><a href=\"https://github.com/SukramJ/$1\"><code>$1</code></a> <span>— $2</span>$d</li>"; }
 { head_ "sukramj.dev" ""
   echo '<h1><img src="/favicon.svg" alt="">sukramj.dev</h1>'
   echo '<p>Open-source projects around Homematic, MQTT and Home Assistant.</p>'
   echo '<h2>Homematic</h2><ul>'
-  item aiohomematic "async Python library for Homematic(IP) via OpenCCU, CCU3, CUxD and CCU-Jack"
+  item aiohomematic "async Python library for Homematic(IP) via OpenCCU, CCU3, CUxD and CCU-Jack" aiohomematic
   item homematicip_local "Home Assistant integration for Homematic(IP)"
-  item openccu-loom "Go daemon bridging Homematic to MQTT, REST, MCP and Matter"
+  item openccu-loom "Go daemon bridging Homematic to MQTT, REST, MCP and Matter" openccu-loom
   item godevccu "virtual CCU for testing"
   echo '</ul><h2>MQTT bridges</h2><ul>'
   item go-daikin2mqtt "Daikin ONECTA"
